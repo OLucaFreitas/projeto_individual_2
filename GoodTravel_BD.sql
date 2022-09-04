@@ -33,7 +33,7 @@ CREATE TABLE `destinos` (
   `dataVolta` varchar(40) NOT NULL,
   `valor` float NOT NULL,
   PRIMARY KEY (`idDestino`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,11 +57,9 @@ CREATE TABLE `promocoes` (
   `idPromo` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(40) NOT NULL,
   `valorPromo` float NOT NULL,
-  `fk_idDestino` int DEFAULT NULL,
-  PRIMARY KEY (`idPromo`),
-  KEY `FK_Promocoes_2` (`fk_idDestino`),
-  CONSTRAINT `FK_Promocoes_2` FOREIGN KEY (`fk_idDestino`) REFERENCES `destinos` (`idDestino`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `idDestino` int NOT NULL,
+  PRIMARY KEY (`idPromo`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +68,7 @@ CREATE TABLE `promocoes` (
 
 LOCK TABLES `promocoes` WRITE;
 /*!40000 ALTER TABLE `promocoes` DISABLE KEYS */;
+INSERT INTO `promocoes` VALUES (1,'Black Friday',500,0);
 /*!40000 ALTER TABLE `promocoes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -82,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-04  1:03:34
+-- Dump completed on 2022-09-04 17:54:08
